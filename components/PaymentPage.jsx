@@ -63,7 +63,7 @@ const PaymentPage = ({username}) => {
             description: "Tirthesh Jain RazorPay",
             image: "https://avatars.githubusercontent.com/u/105976900?v=4",
             order_id: order.id,
-            callback_url: `${process.env.NEXT_PUBLIC_APP_URL}/api/razorpay`,
+            callback_url: `https://buymechai.vercel.app/api/razorpay`,
             prefill: {
                 name: paymentForm.name,
                 email: paymentForm.email,
