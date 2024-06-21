@@ -1,7 +1,5 @@
 import React from "react";
 import PaymentPage from '@/components/PaymentPage';
-import User from '@/models/userModel';
-import { connectDB } from '@/mongodb/connect';
 import {notFound} from 'next/navigation';
 import { fetchuser } from "@/actions/userActions";
 async function pages({params}) {

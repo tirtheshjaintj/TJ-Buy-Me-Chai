@@ -10,7 +10,7 @@ function LoginPage() {
     if (session) {
       router.push("/dashboard");
     }
-  }, [session, router]);
+  }, [session]);
 
   return (
    !session && <div className="text-white py-14 container mx-auto">
