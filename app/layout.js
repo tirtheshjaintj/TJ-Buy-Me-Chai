@@ -8,7 +8,7 @@ import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Buy Me a Chai",
+  title: "Buy Me Chai",
   description: "Pay for Chai of your loved Content Creators and Developers",
 };
 
