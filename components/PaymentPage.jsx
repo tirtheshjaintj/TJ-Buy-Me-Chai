@@ -122,7 +122,7 @@ const PaymentPage = ({username}) => {
 <ul>
 {dbPayments && dbPayments.length>0?dbPayments.slice(0,10).map((p,i)=>(
   <li className='my-2 flex items-center gap-2' key={i}><img width={30} className="rounded-full shadow-2xl" 
-  src="https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png" />{p.name} donated ₹{p.amount} with a message {p.message}</li>
+  src="https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png" />{p.name} donated ₹{p.amount} {p.message.length>0 `with a message ${p.message}`}</li>
 )):<>Still waiting for someone to support</>}
 </ul>
     </div>
