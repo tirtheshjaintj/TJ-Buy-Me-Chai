@@ -43,7 +43,7 @@ transition={{ duration: 0.3 }}
 whileHover={{ scale: 1.1 }}
 whileTap={{ scale: 0.9 }}
 >
-Let's Fund!
+Let&apos;s Fund!
 </motion.button>
 </Link>
           </div>
