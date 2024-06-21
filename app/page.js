@@ -23,7 +23,7 @@ export default function Home() {
         <div>
           <div className="flex pt-5 space-x-4">
 
-<Link href="/about">
+{/* <Link href="/about">
 <motion.button
   type="button"
   className="inline-flex text-lg h-12 animate-shimmer2 items-center justify-center rounded-md border border-blue-800 bg-[linear-gradient(110deg,#001f3f,45%,#007bff,55%,#001f3f)] bg-[length:200%_100%] px-6 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 shadow-md"
@@ -33,7 +33,7 @@ export default function Home() {
 >
     Learn More
 </motion.button>
-</Link>
+</Link> */}
 <Link href="/login">
 
 <motion.button

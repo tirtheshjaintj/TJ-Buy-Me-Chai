@@ -8,7 +8,7 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { data: session } = useSession();
   return (
-    <nav className="bg-gray-900/50 z-[100] backdrop-blur-md text-white p-4 flex justify-between items-center fixed w-full">
+    <nav className="bg-gray-900 md:bg-transparent z-[100] backdrop-blur-md text-white p-4 flex justify-between items-center fixed w-full">
       <Link href={"/"}>
         <div className="logo text-2xl font-bold flex items-center">
           BuyMeChai <GiCoffeeCup className="ml-1 text-3xl" />
@@ -26,7 +26,7 @@ function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="md:hidden absolute top-16 left-0 backdrop-blur-xl z-[1000] text-white p-4 rounded-lg shadow-lg w-full"
+            className="bg-gray-900 md:hidden absolute top-16 left-0 backdrop-blur-md  z-[1000] text-white p-4 rounded-lg shadow-lg w-full"
           >
             <ul className="flex flex-col gap-4 text-center font-semibold" onClick={() => { setMenuOpen(false) }}>
               <motion.li
@@ -42,7 +42,9 @@ function Navbar() {
                 whileHover={{ backgroundColor: '#4b5563' }}
                 className="p-2 rounded-lg"
               >
-                Sign Up
+                <Link href="/login" >
+                    Sign Up
+                  </Link>
               </motion.li>
                 <motion.li
                   whileHover={{ backgroundColor: '#4b5563' }}

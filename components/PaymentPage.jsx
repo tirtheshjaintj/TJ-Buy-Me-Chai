@@ -121,8 +121,8 @@ const PaymentPage = ({username}) => {
 <h2 className="text-2xl font-bold mb-5">{dbPayments?.length} Supporters 🫂 </h2>
 <ul>
 {dbPayments && dbPayments.length>0?dbPayments.slice(0,10).map((p,i)=>(
-  <li className='my-2 flex items-center gap-2' key={i}><img width={30} className="rounded-full shadow-2xl" 
-  src="https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png" />{p.name} donated ₹{p.amount} {p.message.length>0 `with a message ${p.message}`}</li>
+  <li className='my-2 flex items-center gap-2 text-wrap' key={i}><img width={30} className="rounded-full shadow-2xl" 
+  src="https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png" />{p.name} donated ₹{p.amount} {(p.message.toString().length>0) && `with a message ${p.message.toString().substr(0,20)}`}</li>
 )):<>Still waiting for someone to support</>}
 </ul>
     </div>
@@ -142,12 +142,11 @@ const PaymentPage = ({username}) => {
       <button type="submit" className="inline-flex text-xl h-12 w-full animate-shimmer items-center justify-center rounded-md border border-blue-800 bg-[linear-gradient(110deg,#001f3f,45%,#007bff,55%,#001f3f)] bg-[length:200%_100%] px-6 font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 shadow-md"
       >Pay 💰 To 🫂 Support </button>
     </div>
-     <div className="flex gap-2 mt-10">
-      <button type="button" className=" h-12 hover:animate-shimmer items-center justify-center rounded-md border border-blue-800 bg-[linear-gradient(110deg,#001f3f,45%,#007bff,55%,#001f3f)] bg-[length:200%_100%] px-6 font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 shadow-md" onClick={()=>{checkoutHandler(10)}}>Pay ₹10</button>
-      <button type="button" className=" h-12 hover:animate-shimmer items-center justify-center rounded-md border border-blue-800 bg-[linear-gradient(110deg,#001f3f,45%,#007bff,55%,#001f3f)] bg-[length:200%_100%] px-6 font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 shadow-md" onClick={()=>{checkoutHandler(50)}}>Pay ₹50</button>
+     <div className="flex flex-wrap items-center gap-2 mt-10">
+      <button type="button" className=" h-12 hover:animate-shimmer items-center justify-center rounded-md border border-blue-800 bg-[linear-gradient(110deg,#001f3f,45%,#007bff,55%,#001f3f)] bg-[length:200%_100%] px-6 font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 shadow-md" onClick={()=>{checkoutHandler(10)}}>Pay ₹10 </button>
+      <button type="button" className=" h-12 hover:animate-shimmer items-center justify-center rounded-md border border-blue-800 bg-[linear-gradient(110deg,#001f3f,45%,#007bff,55%,#001f3f)] bg-[length:200%_100%] px-6 font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 shadow-md" onClick={()=>{checkoutHandler(50)}}>Pay ₹50 </button>
       <button type="button" className=" h-12 hover:animate-shimmer items-center justify-center rounded-md border border-blue-800 bg-[linear-gradient(110deg,#001f3f,45%,#007bff,55%,#001f3f)] bg-[length:200%_100%] px-6 font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 shadow-md" onClick={()=>{checkoutHandler(100)}}>Pay ₹100</button>
       <button type="button" className=" h-12 hover:animate-shimmer items-center justify-center rounded-md border border-blue-800 bg-[linear-gradient(110deg,#001f3f,45%,#007bff,55%,#001f3f)] bg-[length:200%_100%] px-6 font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 shadow-md" onClick={()=>{checkoutHandler(200)}}>Pay ₹200</button>
-
      </div>
     </form>
 </div>
