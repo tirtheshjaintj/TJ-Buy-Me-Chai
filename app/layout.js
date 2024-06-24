@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <body className=" bg-gray-900 text-white m-auto">
+  
         <SessionWrapper>
         <Navbar/>
         <div className="min-h-[100vh] pt-[150px]">

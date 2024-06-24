@@ -4,12 +4,14 @@ import { FaRegHandshake } from "react-icons/fa";
 import { IoIosRocket } from "react-icons/io";
 import { GiCoffeeCup } from "react-icons/gi";
 import Link from "next/link";
+import Features from "@/components/Features";
+import ShuffleHero from "@/components/Shuffle";
 
 export default function Home() {
 
   return (
     <main className="text-white">
-      <div className="flex flex-col justify-center items-center h-[70vh] text-white text-center">
+      <div className="flex flex-col md:justify-center items-center min-h-[60vh] md:min-h-[70vh] text-white text-center">
         <motion.h1
           className="text-6xl md:text-8xl text-center font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-5 flex items-center space-x-2"
         >
@@ -22,7 +24,6 @@ export default function Home() {
         </motion.p>
         <div>
           <div className="flex pt-5 space-x-4">
-
 {/* <Link href="/about">
 <motion.button
   type="button"
@@ -49,6 +50,8 @@ Let&apos;s Fund!
           </div>
         </div>
       </div>
+      <ShuffleHero/>
+
       <section className="p-10">
         <div className="container mx-auto text-center">
           <motion.h2
@@ -96,9 +99,7 @@ Let&apos;s Fund!
           </div>
         </div>
       </section>
-
-
-
+<Features/>
 
     </main>
   );
