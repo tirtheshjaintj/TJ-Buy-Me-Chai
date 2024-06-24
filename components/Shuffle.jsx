@@ -7,7 +7,7 @@ const ShuffleHero = () => {
     <section className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
       <div> 
         <h3 className="text-4xl md:text-6xl font-semibold">
-          Let's Fund Developers, Creators & Contributors
+          Let&apos;s Fund Developers, Creators & Contributors
         </h3>
         <p className="text-base md:text-lg  my-4 md:my-6">
         A crowdfunding platform for developers, open-source contributors and creators.   
