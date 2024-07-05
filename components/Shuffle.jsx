@@ -13,7 +13,6 @@ const ShuffleHero = () => {
         A crowdfunding platform for developers, open-source contributors and creators.   
         </p>
         <Link href="/login">
-
 <motion.button
 type="button"
 className="inline-flex text-lg h-12 animate-shimmer items-center justify-center rounded-md border border-blue-800 bg-[linear-gradient(110deg,#001f3f,45%,#007bff,55%,#001f3f)] bg-[length:200%_100%] px-6 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 shadow-md"
@@ -141,7 +140,6 @@ const ShuffleGrid = () => {
 
   const shuffleSquares = () => {
     setSquares(generateSquares());
-
     timeoutRef.current = setTimeout(shuffleSquares, 3000);
   };
 
