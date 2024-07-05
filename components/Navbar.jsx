@@ -8,7 +8,8 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { data: session } = useSession();
   return (
-    <nav className="bg-gray-900 bg-transparent z-[100] backdrop-blur-md text-white p-4 flex justify-between items-center fixed w-full">
+    <nav className="bg-transparent z-[100] backdrop-blur-md text-white p-4 flex flex-col md:flex-row justify-between items-center fixed w-full">
+      <div className="flex justify-between w-full md:w-auto">
       <Link href={"/"}>
         <div className="logo text-2xl font-bold flex items-center">
           BuyMeChai <GiCoffeeCup className="ml-1 text-3xl" />
@@ -20,13 +21,14 @@ function Navbar() {
       >
         ☰
       </button>
+      </div>
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className=" md:hidden absolute top-16 left-0 bg-gray-900 bg-transparent z-[100] backdrop-blur-md text-white p-4 rounded-lg shadow-lg w-full"
+            className=" md:hidden top-16 left-0 backdrop-blur-md  z-[1000] text-white p-4 rounded-lg shadow-lg w-full"
           >
             <ul className="flex flex-col gap-4 text-center font-semibold" onClick={() => { setMenuOpen(false) }}>
               <motion.li
@@ -84,7 +86,7 @@ function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="hidden md:flex gap-6 font-semibold justify-center items-center">
+      <div className="hidden md:flex gap-6 font-semibold justify-end items-center">
         <Link href="/" className="inline-flex">Home</Link>
         {(session) ?
           <div className="flex items-center justify-aroun ">
@@ -99,11 +101,6 @@ function Navbar() {
                     /> 
                 </div>
             </Link>
-            {/* <Link href={`/${session?.user.username}`}>
-              <button className="ml-2 inline-flex p-2 h-12 hover:animate-shimmer items-center justify-center rounded-md border border-blue-800 bg-[linear-gradient(110deg,#001f3f,45%,#007bff,55%,#001f3f)] bg-[length:200%_100%] px-6 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 shadow-md">
-                Profile
-              </button>
-            </Link> */}
             <Link href="/login"><button onClick={() => { signOut() }} className="ml-2 inline-flex p-2 h-12 hover:animate-shimmer items-center justify-center rounded-md border border-blue-800 bg-[linear-gradient(110deg,#001f3f,45%,#007bff,55%,#001f3f)] bg-[length:200%_100%] px-6 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 shadow-md">SignOut</button></Link>
           </div> :
           <>
