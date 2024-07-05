@@ -8,7 +8,7 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { data: session } = useSession();
   return (
-    <nav className="bg-gray-900 md:bg-transparent z-[100] backdrop-blur-md text-white p-4 flex justify-between items-center fixed w-full">
+    <nav className="bg-gray-900 bg-transparent z-[100] backdrop-blur-md text-white p-4 flex justify-between items-center fixed w-full">
       <Link href={"/"}>
         <div className="logo text-2xl font-bold flex items-center">
           BuyMeChai <GiCoffeeCup className="ml-1 text-3xl" />

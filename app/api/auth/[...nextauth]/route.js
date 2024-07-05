@@ -1,11 +1,12 @@
+// File path: /pages/api/auth/[...nextauth].js
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import FacebookProvider from 'next-auth/providers/facebook';
 import GoogleProvider from 'next-auth/providers/google';
 import User from "@/models/userModel";
 import { connectDB } from "@/mongodb/connect";
+// Ensure the database is connected
 connectDB();
-
 export const authOptions = NextAuth({
   providers: [
     GithubProvider({
@@ -25,9 +26,9 @@ export const authOptions = NextAuth({
     maxAge: 31536000, // 1 year
   },
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    async signIn({ user }) {
       try {
-        const currentUser = await User.findOne({ email: user.email }).lean();
+        let currentUser = await User.findOne({ email: user.email }).lean();
         if (!currentUser) {
           const newUser = new User({
             email: user.email,
@@ -36,12 +37,11 @@ export const authOptions = NextAuth({
             profilepic: user.image || undefined,
           });
           await newUser.save();
-          user.username = newUser.username;
-          user.name = newUser.username;
-        } else {
-          user.username = currentUser.username;
-          user.name = currentUser.name;
+          currentUser = newUser;
         }
+        user.username = currentUser.username;
+        user.name = currentUser.name;
+        user.profilepic = currentUser.profilepic;
         return true;
       } catch (error) {
         console.error('Error during sign in:', error);
@@ -49,30 +49,33 @@ export const authOptions = NextAuth({
       }
     },
     async jwt({ token, user }) {
-      // If user is present, it means this is during sign in
       if (user) {
         token.username = user.username;
         token.name = user.name;
+        token.email = user.email;
+        token.profilepic = user.profilepic;
       }
       return token;
     },
     async session({ session, token }) {
+      session.user.username = token.username;
+      session.user.name = token.name;
+      session.user.profilepic = token.profilepic;
+      session.user.email = token.email;
       try {
         const currentUser = await User.findOne({ email: session.user.email }).lean();
         if (currentUser) {
-          session.user.email = currentUser.email;
           session.user.name = currentUser.name;
           session.user.username = currentUser.username;
           session.user.profilepic = currentUser.profilepic;
-          session.user.coverpic=currentUser.coverpic;
-          session.user.userid=currentUser._id;
+          session.user.coverpic = currentUser.coverpic;
+          session.user.userid = currentUser._id;
         }
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error('Error fetching user data during session callback:', error);
       }
       return session;
     }
   }
 });
-
 export { authOptions as GET, authOptions as POST };
