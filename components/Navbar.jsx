@@ -26,7 +26,7 @@ function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className=" md:hidden absolute top-16 left-0 backdrop-blur-md  z-[1000] text-white p-4 rounded-lg shadow-lg w-full"
+            className=" md:hidden absolute top-16 left-0 bg-gray-900 bg-transparent z-[100] backdrop-blur-md text-white p-4 rounded-lg shadow-lg w-full"
           >
             <ul className="flex flex-col gap-4 text-center font-semibold" onClick={() => { setMenuOpen(false) }}>
               <motion.li
