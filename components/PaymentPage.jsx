@@ -24,6 +24,12 @@ const PaymentPage = ({ username }) => {
     const dbPayments = await fetchpayments(username);
     setDbPayments(dbPayments);
   }
+  
+  const handleCopy=()=>{
+        window.navigator.clipboard.writeText(`${window.location.origin+"/"+username}`);
+        toast.success('URL Copied Now You can share');
+  }
+
 
   const checkoutHandler = async (amount) => {
     const isValidEmail = (email) => {
@@ -96,7 +102,7 @@ const PaymentPage = ({ username }) => {
     <>
       <div className="mt-[-100px] flex flex-col items-center">
         <Toaster />
-        <div className="cover w-full">
+        <div className="cover w-full" onClick={handleCopy}>
           <img
             src={currentCreator?.coverpic || "https://assets.cntraveller.in/photos/667298314c3597714f7e0ea3/16:9/w_960,c_limit/about1.jpg"}
             width={500}
@@ -109,10 +115,11 @@ const PaymentPage = ({ username }) => {
           /></div>
         <img className="mt-[-30px] rounded-full shadow-2xl h-[100px] w-[100px]"
           src={currentCreator?.profilepic || "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png"}
+          onClick={handleCopy}
           onError={event => {
             event.target.src = "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png"
           }} />
-        <div className="info text-center">
+        <div className="info text-center" onClick={handleCopy}>
           <h1 className="text-2xl font-bold mb-3"> @{username}</h1>
           <div className="text-slate-400">{currentCreator?.name}</div>
           <div className="text-slate-400">  Total Supporters {dbPayments ? new Set(dbPayments.map(payment => payment.email)).size : 0}  |   Total Fund ₹{dbPayments?.reduce((a, b) => a + b.amount, 0)}   </div>
